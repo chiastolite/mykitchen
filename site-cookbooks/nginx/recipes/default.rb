@@ -12,6 +12,12 @@ package 'nginx' do
 end
 
 service 'nginx' do
+  supports :restart => true
   action [:enable, :start]
 end
 
+template '/etc/nginx/nginx.conf' do
+  user  'root'
+  group 'root'
+  mode '0644'
+end
